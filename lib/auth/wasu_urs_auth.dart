@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:apitest/auth/result_listener.dart';
-import 'package:apitest/bean/user_info.dart';
-import 'package:apitest/constant/http_constant.dart';
-import 'package:apitest/utils/dio_util.dart';
-import 'package:apitest/utils/log_util.dart';
+import 'package:WasuAuthSDK/auth/result_listener.dart';
+import 'package:WasuAuthSDK/bean/user_info.dart';
+import 'package:WasuAuthSDK/constant/http_constant.dart';
+import 'package:WasuAuthSDK/utils/dio_util.dart';
+import 'package:WasuAuthSDK/utils/log_util.dart';
 import 'package:dio/dio.dart';
 
 /*

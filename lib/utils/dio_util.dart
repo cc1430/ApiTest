@@ -1,5 +1,5 @@
-import 'package:apitest/constant/http_constant.dart';
-import 'package:apitest/utils/log_util.dart';
+import 'package:WasuAuthSDK/constant/http_constant.dart';
+import 'package:WasuAuthSDK/utils/log_util.dart';
 import 'package:dio/dio.dart';
 
 import '../auth/result_listener.dart';

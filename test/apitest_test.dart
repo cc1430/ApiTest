@@ -1,6 +1,6 @@
-import 'package:apitest/auth/result_listener.dart';
-import 'package:apitest/auth/wasu_urs_auth.dart';
-import 'package:apitest/bean/user_info.dart';
+import 'package:WasuAuthSDK/auth/result_listener.dart';
+import 'package:WasuAuthSDK/auth/wasu_urs_auth.dart';
+import 'package:WasuAuthSDK/bean/user_info.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
