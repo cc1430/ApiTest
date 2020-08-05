@@ -1,6 +1,6 @@
-import 'package:WasuAuthSDK/auth/result_listener.dart';
-import 'package:WasuAuthSDK/auth/wasu_urs_auth.dart';
-import 'package:WasuAuthSDK/bean/user_info.dart';
+import 'package:wasuauthsdk/auth/result_listener.dart';
+import 'package:wasuauthsdk/auth/wasu_urs_auth.dart';
+import 'package:wasuauthsdk/bean/user_info.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -9,11 +9,11 @@ void main() {
 
     MyListener myListener = MyListener();
     UserInfo userInfo = UserInfo();
-    userInfo.nickName = "cici123";
-    userInfo.oldPassword = "cc111111";
+    userInfo.nickName = "cici";
+    userInfo.password = "cc111111";
     userInfo.phone = "13706810995";
-    userInfo.uid = "U20200805000200";
-//    userInfo.verCode = "547767";
+//    userInfo.uid = "U20200805000200";
+    userInfo.verCode = "624424";
 
     String stbId = "030183762A8BD3A9F4574";
 //    await WasuUrsAuth.getInstance().register(userInfo, myListener);
@@ -22,7 +22,7 @@ void main() {
 
 //    await WasuUrsAuth.getInstance().register(userInfo, resultListener: myListener);
 
-//    await WasuUrsAuth.getInstance().callPwdLogin("13706810995", "cc111111", myListener);
+//    await WasuUrsAuth.getInstance().callPwdLogin("13706810995", "cc111111", resultListener: myListener);
 
 //    await WasuUrsAuth.getInstance().callPhoneQuickLogin("", resultListener: myListener);
 

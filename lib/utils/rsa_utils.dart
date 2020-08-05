@@ -1,11 +1,7 @@
-import 'package:pointycastle/export.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:encrypt/encrypt_io.dart';
-import 'package:pointycastle/asymmetric/api.dart';
 
 class RSAUtils {
-//    private static Map<Integer, String> keyMap = new HashMap<Integer, String>();  //用于封装随机产生的公钥与私钥
-
   static const String _RSA_PUBLIC_KEY =
       "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC04AKjcp" +
           "+ruQ8sQ8k8zO+7wATnEWHjwIfBtSG5\n" +
@@ -43,11 +39,13 @@ class RSAUtils {
    */
   static Future<String> encrypt(String str) async {
     ///TODO 加密有问题
-    RSAPublicKey publicKey = await parseKeyFromFile<RSAPublicKey>('./lib/keys/public_key.pem');
-    var encrypter = Encrypter(RSA(publicKey: publicKey));
-    var encrypted = encrypter.encrypt(str);
-    print("encrypted = " + encrypted.base64);
-    return encrypted.base64;
+//    RSAPublicKey publicKey = await parseKeyFromFile<RSAPublicKey>('./lib/keys/public_key.pem');
+//    var encrypter = Encrypter(RSA(publicKey: publicKey));
+//    var encrypted = encrypter.encrypt(str);
+//    print("encrypted = " + encrypted.base64);
+//    return encrypted.base64;
+
+    return "";
   }
 
 }

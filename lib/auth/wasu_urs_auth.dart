@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:WasuAuthSDK/auth/result_listener.dart';
-import 'package:WasuAuthSDK/bean/user_info.dart';
-import 'package:WasuAuthSDK/constant/http_constant.dart';
-import 'package:WasuAuthSDK/utils/dio_utils.dart';
-import 'package:WasuAuthSDK/utils/log_utils.dart';
-import 'package:WasuAuthSDK/utils/rsa_utils.dart';
+import 'package:wasuauthsdk/auth/result_listener.dart';
+import 'package:wasuauthsdk/bean/user_info.dart';
+import 'package:wasuauthsdk/constant/http_constant.dart';
+import 'package:wasuauthsdk/utils/dio_utils.dart';
+import 'package:wasuauthsdk/utils/log_utils.dart';
+import 'package:wasuauthsdk/utils/rsa_utils.dart';
 import 'package:dio/dio.dart';
 
 /*
@@ -181,7 +181,7 @@ class WasuUrsAuth {
     body["client_id"] = wasuUrsAuth._clientId;
     body["client_secret"] = wasuUrsAuth._clientSecret;
     body["username"] = userName;
-    body["password"] = await RSAUtils.encrypt(password);
+    body["password"] = password; //await RSAUtils.encrypt(password);
     body["grant_type"] = "password";
     await DioUtils.getInstance().post(url, headParam: head, bodyParam: body, listener: resultListener);
   }
