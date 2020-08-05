@@ -7,7 +7,7 @@
  * @author Created by chenchen
  * @date  on 2020/7/30
  */
-class LogUtil {
+class LogUtils {
   static const String _TAG_DEF = "chenchen";
 
   static bool debuggable = false; //是否是debug模式,true: log v 不输出.

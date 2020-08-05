@@ -1,5 +1,5 @@
 import 'package:WasuAuthSDK/constant/http_constant.dart';
-import 'package:WasuAuthSDK/utils/log_util.dart';
+import 'package:WasuAuthSDK/utils/log_utils.dart';
 import 'package:dio/dio.dart';
 
 import '../auth/result_listener.dart';
@@ -20,7 +20,7 @@ class DioUtils {
 
   /// default options
   static const int CONNECT_TIMEOUT = 5000;
-  static const int RECEIVE_TIMEOUT = 3000;
+  static const int RECEIVE_TIMEOUT = 5000;
 
   DioUtils() {
     // 全局属性：请求前缀、连接超时时间、响应超时时间
@@ -43,10 +43,10 @@ class DioUtils {
 
   Future<Response> get(String url, {Map<String, dynamic> headParam, Map<String, dynamic> bodyParam, ResultListener listener}) async {
     try {
-      LogUtil.v("请求开始--------------------------------------------");
-      LogUtil.v("getReq url = $url");
-      LogUtil.v("head = $headParam");
-      LogUtil.v("body = $bodyParam");
+      LogUtils.v("请求开始--------------------------------------------");
+      LogUtils.v("getReq url = $url");
+      LogUtils.v("head = $headParam");
+      LogUtils.v("body = $bodyParam");
       if(headParam == null || headParam.isEmpty) {
         dio.options.headers = {};
       } else {
@@ -57,8 +57,8 @@ class DioUtils {
         if (listener != null) {
           listener.onSuccess(response.data);
         }
-        LogUtil.v("请求成功: " + response.data);
-        LogUtil.v("请求结束--------------------------------------------");
+        LogUtils.v("请求成功: " + response.data);
+        LogUtils.v("请求结束--------------------------------------------");
         return response;
       } else {
         if (listener != null) {
@@ -66,7 +66,7 @@ class DioUtils {
         }
       }
     } catch (e) {
-      LogUtil.e('请求出错：' + e.toString());
+      LogUtils.e('请求出错：' + e.toString());
       if (listener != null) {
         listener.onError(e.toString());
       }
@@ -75,10 +75,10 @@ class DioUtils {
   }
 
   Future<Response> post(String url, {Map<String, dynamic> headParam, Map<String, dynamic> bodyParam, ResultListener listener}) async {
-    LogUtil.v("请求开始--------------------------------------------");
-    LogUtil.v("postReq url = $url");
-    LogUtil.v("head = $headParam");
-    LogUtil.v("body = $bodyParam");
+    LogUtils.v("请求开始--------------------------------------------");
+    LogUtils.v("postReq url = $url");
+    LogUtils.v("head = $headParam");
+    LogUtils.v("body = $bodyParam");
     try {
       if(headParam == null || headParam.isEmpty) {
         dio.options.headers = {};
@@ -90,12 +90,12 @@ class DioUtils {
         if (listener != null) {
           listener.onSuccess(response.data);
         }
-        LogUtil.v("请求成功: " + response.data);
-        LogUtil.v("请求结束--------------------------------------------");
+        LogUtils.v("请求成功: " + response.data);
+        LogUtils.v("请求结束--------------------------------------------");
         return response;
       } else {
         if (listener != null) {
-          listener.onFail('statusCode:${response.statusCode}');
+          listener.onFail(response.data);
         }
       }
     } catch (e) {
