@@ -81,6 +81,12 @@ class WasuUrsAuth {
     String url = HttpConstant.BASE_URL_URS_OL + HttpConstant.URS_OL_ADD_USER;
 
     String token = await _getAccessToken();
+    if(token == null) {
+      if(resultListener != null) {
+        resultListener.onFail("获取令牌失败！");
+      }
+      return;
+    }
     Map<String, dynamic> head = Map();
     head["Authorization"] = "Bearer " + token;
 
@@ -105,6 +111,12 @@ class WasuUrsAuth {
     String url = HttpConstant.BASE_URL_URS_OL + HttpConstant.URS_OL_SEND_SMS_CODE;
 
     String token = await _getAccessToken();
+    if(token == null) {
+      if(resultListener != null) {
+        resultListener.onFail("获取令牌失败！");
+      }
+      return;
+    }
     Map<String, dynamic> head = Map();
     head["Authorization"] = HttpConstant.TOKEN_PREFIX + token;
 
@@ -131,6 +143,12 @@ class WasuUrsAuth {
     String url = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_SEND_LOGIN_SMS_CODE;
 
     String token = await _getAccessToken();
+    if(token == null) {
+      if(resultListener != null) {
+        resultListener.onFail("获取令牌失败！");
+      }
+      return;
+    }
     Map<String, dynamic> head = Map();
     head["Authorization"] = HttpConstant.TOKEN_PREFIX + token;
 
@@ -174,6 +192,13 @@ class WasuUrsAuth {
     String url = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_TOKEN;
 
     String token = await _getAccessToken();
+    if(token == null) {
+      if(resultListener != null) {
+        resultListener.onFail("获取令牌失败！");
+      }
+      return;
+    }
+
     Map<String, dynamic> head = Map();
     head["Authorization"] = HttpConstant.TOKEN_PREFIX + token;
 
