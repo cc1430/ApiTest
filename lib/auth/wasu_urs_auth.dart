@@ -206,7 +206,7 @@ class WasuUrsAuth {
     body["client_id"] = wasuUrsAuth._clientId;
     body["client_secret"] = wasuUrsAuth._clientSecret;
     body["username"] = userName;
-    body["password"] = password; //await RSAUtils.encrypt(password);
+    body["password"] = await RSAUtils.encrypt(password);
     body["grant_type"] = "password";
     await DioUtils.getInstance().post(url, headParam: head, bodyParam: body, listener: resultListener);
   }
