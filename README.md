@@ -1,11 +1,10 @@
 # WasuAuthSDK
-----------------
 
 This sdk is only used for flutter project.
+
 Latest Version 0.0.3.
 
 # Dependencies
-----------------
 
 Please integrate sdk by the following steps.
 
@@ -20,9 +19,7 @@ dependencies:
 2.Then click "Pub get" on your IDE to make sure the referenced packages is installed.
 
 # Releases
-----------------
 Our [change log](https://github.com/cc1430/WasuAuthSDK/blob/master/CHANGELOG.md) has release history.
 
 # API reference
-----------------
 Learn more from [Documentation](https://pub.dev/documentation/wasuauthsdk/latest/)
