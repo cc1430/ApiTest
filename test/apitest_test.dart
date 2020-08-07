@@ -23,6 +23,10 @@ void main() {
 
 //    await WasuUrsAuth.getInstance().register(userInfo, resultListener: myListener);
 
+//    await WasuUrsAuth.getInstance().sendLoginSMSCode(userInfo.phone, resultListener: myListener);
+
+//    await WasuUrsAuth.getInstance().callSMSCodeLogin(userInfo.phone, "272076", resultListener: myListener);
+
 //    await WasuUrsAuth.getInstance().callPwdLogin("13706810995", "cc111111", resultListener: myListener);
 
 //    await WasuUrsAuth.getInstance().callPhoneQuickLogin("", resultListener: myListener);
@@ -31,9 +35,7 @@ void main() {
 
 //    await WasuUrsAuth.getInstance().getUserByUid(token, uid, resultListener: myListener);
 
-//    String token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJBTEwiXSwiZXhwIjoxNTk2NjEyNDQ1LCJqdGkiOiJmOGNiZjEzOC02MGY2LTQ2NDItYTUxMi0zZDFmOGY3ZjZkYzEiLCJjbGllbnRfaWQiOiJjMiJ9.C9Lr7x05pP5Lrg0Rp_YA0qfTHfelYRKYCq8nQUW0ST8-HjLQh7Nf-An7ZpDAMzQRxGySRZKRKDpU38oapMX1GJA2F3LHIqBTLxiDXnBmh_85i_QsmBPWPmSaVFLzkXnL2VDDSeWeiz1j46w256k28fTIZRcyrSrjz8bM5IwUpmIYW0KRLtiimDmuk4mM7vDFY_78JnUsXnT7MsJwfF_CnSQI812gO9LWnjTEDxWsETnWyhNheYoUWWIsHpvXSNQeZa6ZPE5ZwRIY6nRjJ9HJprSDqd6ivZNwM1GJu-j1SHBUbpZ3r56AEFVUp1hI1KZmFXzqBIidy0FAs80rd9y6fQ";
-
-//     await WasuUrsAuth.getInstance().updateUser(token, userInfo, resultListener: myListener);
+//    wait WasuUrsAuth.getInstance().updateUser(token, userInfo, resultListener: myListener);
   });
 }
 

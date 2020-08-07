@@ -180,7 +180,7 @@ class WasuUrsAuth {
   /*
    * 用户名密码登录
    */
-  Future callPwdLogin(String userName, String password, {ResultListener resultListener}) async {
+  void callPwdLogin(String userName, String password, {ResultListener resultListener}) async {
     if (!isInit()) {
       return;
     }
@@ -206,8 +206,8 @@ class WasuUrsAuth {
     body["client_id"] = wasuUrsAuth._clientId;
     body["client_secret"] = wasuUrsAuth._clientSecret;
     body["username"] = userName;
-    body["password"] = await RSAUtils.encrypt(password);
-    body["grant_type"] = "password";
+    body["password"] = RSAUtils.encrypt(password);
+    body["grant_type"] = HttpConstant.GRANT_TYPE_PASSWORD;
     await DioUtils.getInstance().post(url, headParam: head, bodyParam: body, listener: resultListener);
   }
 
@@ -228,7 +228,7 @@ class WasuUrsAuth {
     Map<String, dynamic> body = Map();
     body["client_id"] = wasuUrsAuth._clientId;
     body["client_secret"] = wasuUrsAuth._clientSecret;
-    body["username"] = phone;
+    body["username"] = RSAUtils.encrypt(phone);
     body["smscode"] = smsCode;
     body["grant_type"] = HttpConstant.GRANT_TYPE_SMS_CODE;
     await DioUtils.getInstance().post(url, bodyParam: body, listener: resultListener);

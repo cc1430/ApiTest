@@ -40,6 +40,7 @@ class HttpConstant{
   static const String SEND_TYPE_PHONE = "phone";
 
   static const String GRANT_TYPE_CLIENT_CREDENTIALS = "client_credentials";
+  static const String GRANT_TYPE_PASSWORD = "password";
   static const String GRANT_TYPE_SMS_CODE = "sms_code";
   static const String GRANT_TYPE_ONCLICK = "onclick";
   static const String GRANT_TYPE_SCAN_CODE = "scancode";
