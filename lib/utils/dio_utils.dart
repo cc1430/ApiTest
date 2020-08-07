@@ -47,8 +47,8 @@ class DioUtils {
       LogUtils.v("getReq url = $url");
       LogUtils.v("head = $headParam");
       LogUtils.v("body = $bodyParam");
-      if(headParam == null || headParam.isEmpty) {
-        dio.options.headers = {};
+      if(headParam == null) {
+        dio.options.headers = Map();
       } else {
         dio.options.headers = headParam;
       }
@@ -80,8 +80,8 @@ class DioUtils {
     LogUtils.v("head = $headParam");
     LogUtils.v("body = $bodyParam");
     try {
-      if(headParam == null || headParam.isEmpty) {
-        dio.options.headers = {};
+      if(headParam == null) {
+        dio.options.headers = Map();
       } else {
         dio.options.headers = headParam;
       }
