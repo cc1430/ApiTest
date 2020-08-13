@@ -41,12 +41,12 @@ class DioUtils {
     return dioUtils ?? DioUtils();
   }
 
-  Future<Response> get(String url, {Map<String, dynamic> headParam, Map<String, dynamic> bodyParam, ResultListener listener}) async {
+  Future<Response> get(String url, {Map headParam, Map bodyParam, ResultListener listener}) async {
     try {
-      LogUtils.v("请求开始--------------------------------------------");
-      LogUtils.v("getReq url = $url");
-      LogUtils.v("head = $headParam");
-      LogUtils.v("body = $bodyParam");
+      LogUtils.d("请求开始--------------------------------------------");
+      LogUtils.d("getReq url = $url");
+      LogUtils.d("head = $headParam");
+      LogUtils.d("body = $bodyParam");
       if(headParam == null) {
         dio.options.headers = Map();
       } else {
@@ -57,8 +57,8 @@ class DioUtils {
         if (listener != null) {
           listener.onSuccess(response.data);
         }
-        LogUtils.v("请求成功: " + response.data);
-        LogUtils.v("请求结束--------------------------------------------");
+        LogUtils.d("请求成功: " + response.data);
+        LogUtils.d("请求结束--------------------------------------------");
         return response;
       } else {
         if (listener != null) {
@@ -66,7 +66,7 @@ class DioUtils {
         }
       }
     } catch (e) {
-      LogUtils.e('请求出错：' + e.toString());
+      LogUtils.d('请求出错：' + e.toString());
       if (listener != null) {
         listener.onError(e.toString());
       }
@@ -74,11 +74,11 @@ class DioUtils {
     return null;
   }
 
-  Future<Response> post(String url, {Map<String, dynamic> headParam, Map<String, dynamic> bodyParam, ResultListener listener}) async {
-    LogUtils.v("请求开始--------------------------------------------");
-    LogUtils.v("postReq url = $url");
-    LogUtils.v("head = $headParam");
-    LogUtils.v("body = $bodyParam");
+  Future<Response> post(String url, {Map headParam, Map bodyParam, ResultListener listener}) async {
+    LogUtils.d("请求开始--------------------------------------------");
+    LogUtils.d("postReq url = $url");
+    LogUtils.d("head = $headParam");
+    LogUtils.d("body = $bodyParam");
     try {
       if(headParam == null) {
         dio.options.headers = Map();
@@ -90,8 +90,8 @@ class DioUtils {
         if (listener != null) {
           listener.onSuccess(response.data);
         }
-        LogUtils.v("请求成功: " + response.data);
-        LogUtils.v("请求结束--------------------------------------------");
+        LogUtils.d("请求成功: " + response.data);
+        LogUtils.d("请求结束--------------------------------------------");
         return response;
       } else {
         if (listener != null) {

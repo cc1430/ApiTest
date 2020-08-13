@@ -32,7 +32,7 @@ class HttpConstant{
   static const String OAUTH_TOKEN = "/oauth/token";
   static const String OAUTH_CHECK_TOKEN = "/oauth/check_token";
   static const String OAUTH_SEND_LOGIN_SMS_CODE = "/sms/sendLoginSMSCode";
-  static const String OAUTH_GEN_QR_CODE = "/oauth/genQrcode";
+  static const String OAUTH_GEN_QR_CODE = "/qrcode/genQrcode";
 
   /// Parameter def -------------------------------------------------------------
   static const String TOKEN_PREFIX = "Bearer ";
