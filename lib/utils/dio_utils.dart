@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:wasuauthsdk/constant/http_constant.dart';
-import 'package:wasuauthsdk/utils/log_utils.dart';
 import 'package:dio/dio.dart';
 
 import '../auth/result_listener.dart';
@@ -28,6 +29,7 @@ class DioUtils {
       connectTimeout: CONNECT_TIMEOUT,
       receiveTimeout: RECEIVE_TIMEOUT,
       responseType: ResponseType.plain,
+      contentType: ContentType.parse("application/x-www-form-urlencoded"),
       validateStatus: (status) {
         //不使用http状态码判断状态，使用AdapterInterceptor来处理（适用于标准REST风格）
         return true;
@@ -38,15 +40,18 @@ class DioUtils {
   }
 
   static DioUtils getInstance() {
-    return dioUtils ?? DioUtils();
+    if (dioUtils == null) {
+      dioUtils = DioUtils();
+    }
+    return dioUtils;
+  }
+
+  void enableLogger({bool enable = false}) {
+    dio.interceptors.add(LogInterceptor(request: enable, requestHeader: enable, requestBody: enable, responseHeader: enable, responseBody: enable));
   }
 
   Future<Response> get(String url, {Map headParam, Map bodyParam, ResultListener listener}) async {
     try {
-      LogUtils.d("请求开始--------------------------------------------");
-      LogUtils.d("getReq url = $url");
-      LogUtils.d("head = $headParam");
-      LogUtils.d("body = $bodyParam");
       if(headParam == null) {
         dio.options.headers = Map();
       } else {
@@ -57,16 +62,13 @@ class DioUtils {
         if (listener != null) {
           listener.onSuccess(response.data);
         }
-        LogUtils.d("请求成功: " + response.data);
-        LogUtils.d("请求结束--------------------------------------------");
         return response;
       } else {
         if (listener != null) {
-          listener.onFail('statusCode:${response.statusCode}');
+          listener.onFail(response.data);
         }
       }
     } catch (e) {
-      LogUtils.d('请求出错：' + e.toString());
       if (listener != null) {
         listener.onError(e.toString());
       }
@@ -75,13 +77,10 @@ class DioUtils {
   }
 
   Future<Response> post(String url, {Map headParam, Map bodyParam, ResultListener listener}) async {
-    LogUtils.d("请求开始--------------------------------------------");
-    LogUtils.d("postReq url = $url");
-    LogUtils.d("head = $headParam");
-    LogUtils.d("body = $bodyParam");
     try {
       if(headParam == null) {
         dio.options.headers = Map();
+        dio.options.headers["Content-Type"] = "application/x-www-form-urlencoded";
       } else {
         dio.options.headers = headParam;
       }
@@ -90,8 +89,6 @@ class DioUtils {
         if (listener != null) {
           listener.onSuccess(response.data);
         }
-        LogUtils.d("请求成功: " + response.data);
-        LogUtils.d("请求结束--------------------------------------------");
         return response;
       } else {
         if (listener != null) {

@@ -17,6 +17,7 @@ void main() {
     userInfo.verCode = "624424";
 
     String stbId = "030183762A8BD3A9F4574";
+
 //    await WasuUrsAuth.getInstance().register(userInfo, resultListener: myListener);
 
 //    await WasuUrsAuth.getInstance().sendSMSCode("13706810995");
@@ -33,11 +34,18 @@ void main() {
 
 //    await WasuUrsAuth.getInstance().getQrCode(stbId, WasuUrsAuth.TOS_TYPE_LOGIN, resultListener: myListener);
 
+    String qrcodeId = "bind-030183762A8BD3A9F4574-730aa079525849d2a80a1a27bdbf8e90";
+//    await WasuUrsAuth.getInstance().checkQrcodeStatus(qrcodeId, resultListener: myListener);
+    String token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJVMjAyMDA4MTQwMDAxOTkiLCJ1c2VyX25hbWUiOiJ7XCJhdmF0YXJ1cmxcIjpcIlwiLFwiZW1haWxcIjpcIlwiLFwibmlja25hbWVcIjpcImNpY2lcIixcInBob25lXCI6XCIxMzcwNjgxMDk5NVwiLFwic3RhdGVcIjowLFwidWlkXCI6XCJVMjAyMDA4MTQwMDAxOTlcIixcInVzZXJuYW1lXCI6XCIxMzcwNjgxMDk5NVwifSIsInNjb3BlIjpbIkFMTCJdLCJleHAiOjE1OTc2NjI3OTgsImF1dGhvcml0aWVzIjpbImFsbCJdLCJqdGkiOiIyY2RlYTU1NS02ZGYzLTQ1MjQtOTk4Yi04MjQwMDA0MGQzN2EiLCJjbGllbnRfaWQiOiJjMiJ9.AGpq85YqKVggkl9LEfmdkJRRc6wtpoQy41QZMlMzpJzJ147uQicjOf7qiKZeXRHf-P8XEMc7BTrDCA5eWXdZlOLTYvlcqhzdH33_HzSkRGUeNkMzxQ-IuoG_9fOHtvZ9HSLki5ONXodLPPq05bNVsS6jWLmq8gF3FSAveBkS1fEQdkF6grm-ML7tvw1XsfXyDlvWVufwUhhnEmrozAp8vxeRf0OqvmFKE1ei_ffCgx9ZTYJI7UhH-lI9xIFUztRqNLoZwUdYhSo-Y2efISFD89LcSj6UNgPN6tc6kAtnP5wo-F6qFz0PiNZshD2mBw9YHaAxVJjU9AOyLT_3X4xnwA";
+//    await WasuUrsAuth.getInstance().scanOpt(qrcodeId, token, resultListener: myListener);
+
+//    await WasuUrsAuth.getInstance().callAuthLogin(qrcodeId, token, resultListener: myListener);
+
 //    await WasuUrsAuth.getInstance().getUserByUid(token, uid, resultListener: myListener);
 
 //    await WasuUrsAuth.getInstance().updateUser(token, userInfo, resultListener: myListener);
 
-//    String token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJBTEwiXSwiZXhwIjoxNTk3MjA5NjE0LCJqdGkiOiI0MzEwYTcxNC0yODliLTQxMGEtOGFhNy0zMjUzODFhMTk0YzQiLCJjbGllbnRfaWQiOiJjMiJ9.ZwR1RfZq9QocTBnhGIuNeNX7nKy0jXOPY5kdsoE07fOlpkeIS_IWcY_snoDNeLQg10SwzT08q008AIDjcE4DH4RICwy065I59CaiHNHIfPSkSQLdyOVvoO_T6wSFq_lV3r2_Gg5U9LNIit7UVVVC2f1DYyLWdegDST95Kz9Kq1dF7szdNoIeVAuuVIVMnOO6f7xz5qGphE643mU6YAnKpwlkQKCnxZyBK_ih8nxI9EirvF3WN2lw9Jx1uvToEquOxIgbRjj0PXViKBH-UlS1TQttRm6_oPKOifWmqncYy7HFOVz_YcTwjTkGQaz4Yl_Wh--v6S9QoQUfGjdg32TPYw";
+//
 //  await WasuUrsAuth.getInstance().bindStbId(token, stbId, userInfo.phone, WasuUrsAuth.STB_OPT_UNBIND, resultListener: myListener);
 
   });

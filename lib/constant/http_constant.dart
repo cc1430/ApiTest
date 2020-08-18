@@ -33,6 +33,8 @@ class HttpConstant{
   static const String OAUTH_CHECK_TOKEN = "/oauth/check_token";
   static const String OAUTH_SEND_LOGIN_SMS_CODE = "/sms/sendLoginSMSCode";
   static const String OAUTH_GEN_QR_CODE = "/qrcode/genQrcode";
+  static const String OAUTH_CHECK_STATUS = "/qrcode/checkStatus";
+  static const String OAUTH_SCAN_OPT = "/qrcode/scanOpt";
 
   /// Parameter def -------------------------------------------------------------
   static const String TOKEN_PREFIX = "Bearer ";
@@ -43,6 +45,6 @@ class HttpConstant{
   static const String GRANT_TYPE_PASSWORD = "password";
   static const String GRANT_TYPE_SMS_CODE = "sms_code";
   static const String GRANT_TYPE_ONCLICK = "onclick";
-  static const String GRANT_TYPE_SCAN_CODE = "scancode";
+  static const String GRANT_TYPE_SCAN_CODE = "scan_code";
   static const String GRANT_TYPE_REFRESH_TOKEN = "refresh_token";
 }

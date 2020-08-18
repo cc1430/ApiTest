@@ -47,6 +47,7 @@ class WasuUrsAuth {
 
   WasuUrsAuth setLoggerEnable(bool enable, {String tag}) {
     LogUtils.init(isDebug: enable, tag: tag);
+    DioUtils.getInstance().enableLogger(enable: enable);
     return this;
   }
 
@@ -278,15 +279,13 @@ class WasuUrsAuth {
 
     String url = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_GEN_QR_CODE;
     Map<String, dynamic> body = Map();
-    body["resource_no"] = stbId;
+    body["resource_no"] = RSAUtils.encrypt(stbId);
     body["tos"] = tos;
     await DioUtils.getInstance().post(url, bodyParam: body, listener: resultListener);
   }
 
-  /*
-   * 二维码授权登录
-   */
-  void callAuthLogin(String qrcodeId, {ResultListener resultListener}) async {
+  /// 检查二维码状态
+  void checkQrcodeStatus(String qrcodeId, {ResultListener resultListener}) async {
     if (!isInit()) {
       return;
     }
@@ -294,16 +293,48 @@ class WasuUrsAuth {
       LogUtils.d("传入参数有误！");
       return;
     }
+    String url = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_CHECK_STATUS;
+    Map<String, dynamic> body = Map();
+    body["qrcode_id"] = qrcodeId;
+    await DioUtils.getInstance().post(url, bodyParam: body, listener: resultListener);
+  }
+
+  ///手机扫码
+  void scanOpt(String qrcodeId, String accessToken, {ResultListener resultListener}) async {
+    if (!isInit()) {
+      return;
+    }
+    if (qrcodeId == null || accessToken == null) {
+      LogUtils.d("传入参数有误！");
+      return;
+    }
+    String url = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_SCAN_OPT;
+    Map<String, dynamic> body = Map();
+    body["qrcode_id"] = qrcodeId;
+    body["access_token"] = accessToken;
+    await DioUtils.getInstance().post(url, bodyParam: body, listener: resultListener);
+  }
+
+  /// 手机授权登录
+  void callAuthLogin(String qrcodeId, String accessToken, {ResultListener resultListener}) async {
+    if (!isInit()) {
+      return;
+    }
+    if (qrcodeId == null || accessToken == null) {
+      LogUtils.d("传入参数有误！");
+      return;
+    }
 
     String url = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_TOKEN;
-    Map<String, dynamic> head = _getHeaders();
 
-    Map<String, dynamic> body = Map();
+    Map<String, String> body = Map();
+    body["qrcode_id"] = qrcodeId;
+    body["access_token"] = accessToken;
     body["client_id"] = wasuUrsAuth._clientId;
     body["client_secret"] = wasuUrsAuth._clientSecret;
-    body["qrcode_id"] = qrcodeId;
     body["grant_type"] = HttpConstant.GRANT_TYPE_SCAN_CODE;
-    await DioUtils.getInstance().post(url, headParam: head, bodyParam: body, listener: resultListener);
+
+    await DioUtils.getInstance().post(url, bodyParam: body, listener: resultListener);
   }
 
   /*
