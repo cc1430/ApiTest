@@ -4,3 +4,4 @@
 ## [0.0.4] - 1. Fix issue cannot open pem file on device.
              2. Using secret string instead of pem file for RSA encryption.
              3. Encrypt phone number in "callSMSCodeLogin" method.
+## [0.0.5] - Add qr code interfaces.
