@@ -44,7 +44,7 @@ class HttpConstant{
   static const String GRANT_TYPE_CLIENT_CREDENTIALS = "client_credentials";
   static const String GRANT_TYPE_PASSWORD = "password";
   static const String GRANT_TYPE_SMS_CODE = "sms_code";
-  static const String GRANT_TYPE_ONCLICK = "onclick";
+  static const String GRANT_TYPE_ONECLICK = "oneclick";
   static const String GRANT_TYPE_SCAN_CODE = "scan_code";
   static const String GRANT_TYPE_REFRESH_TOKEN = "refresh_token";
 }

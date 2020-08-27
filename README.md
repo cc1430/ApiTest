@@ -2,7 +2,6 @@
 
 This sdk is only used for flutter project.
 
-Latest Version 0.0.4.
 
 # Dependencies
 

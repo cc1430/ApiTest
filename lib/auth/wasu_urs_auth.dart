@@ -51,12 +51,15 @@ class WasuUrsAuth {
     return this;
   }
 
-  bool isInit() {
+  bool isInit({ResultListener resultListener}) {
     if (wasuUrsAuth == null ||
         wasuUrsAuth._clientId == null ||
         wasuUrsAuth._clientSecret == null ||
         wasuUrsAuth._packageName == null) {
       LogUtils.d("未初始化！");
+      if (resultListener != null) {
+        resultListener.onFail("未初始化");
+      }
       return false;
     }
     return true;
@@ -261,7 +264,7 @@ class WasuUrsAuth {
     body["client_id"] = wasuUrsAuth._clientId;
     body["client_secret"] = wasuUrsAuth._clientSecret;
     body["accesstoken"] = token;
-    body["grant_type"] = HttpConstant.GRANT_TYPE_ONCLICK;
+    body["grant_type"] = HttpConstant.GRANT_TYPE_ONECLICK;
     await DioUtils.getInstance().post(url, headParam: head, bodyParam: body, listener: resultListener);
   }
 
