@@ -167,13 +167,21 @@ class WasuUrsAuth {
   /*
    * 客户端模式获取token
    */
-  Future<String> _getAccessToken() async {
+  Future<String> _getAccessToken({String clientId, String clientSecret}) async {
     String initUrl = HttpConstant.BASE_URL_URS_AUTH + HttpConstant.OAUTH_TOKEN;
     Map<String, dynamic> head = _getHeaders();
 
     Map<String, dynamic> body = Map();
-    body["client_id"] = wasuUrsAuth._clientId;
-    body["client_secret"] = wasuUrsAuth._clientSecret;
+    if (clientId == null || clientId.isEmpty) {
+      body["client_id"] = wasuUrsAuth._clientId;
+    } else {
+      body["client_id"] = clientId;
+    }
+    if (clientSecret == null || clientSecret.isEmpty) {
+      body["client_secret"] = wasuUrsAuth._clientSecret;
+    } else {
+      body["client_secret"] = clientSecret;
+    }
     body["grant_type"] = HttpConstant.GRANT_TYPE_CLIENT_CREDENTIALS;
     Response response = await DioUtils.getInstance().post(initUrl, headParam: head, bodyParam: body);
     if (response == null) {
@@ -406,13 +414,20 @@ class WasuUrsAuth {
   /*
    * 手机绑定机顶盒
    */
-  void bindStbId(String token, String stbId, String phone, String opt, {ResultListener resultListener}) async {
+  void bindStbId(String stbId, String phone, String opt, {String token, String clientId, String clientSecret, ResultListener resultListener}) async {
     if (!isInit()) {
       return;
     }
-    if (token == null || opt == null) {
-      LogUtils.d("传入参数有误！");
-      return;
+
+    if (token == null || token.isEmpty) {
+      token = await _getAccessToken(clientId: clientId, clientSecret: clientSecret);
+    }
+
+    if (token == null || token.isEmpty) {
+      if (resultListener != null) {
+        resultListener.onFail("token获取失败！");
+        return;
+      }
     }
 
     String url = HttpConstant.BASE_URL_URS_OL + HttpConstant.URS_OL_BIND_STB_ID;

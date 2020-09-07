@@ -6,3 +6,4 @@
              3. Encrypt phone number in "callSMSCodeLogin" method.
 ## [0.0.5] - Add qr code interfaces.
 ## [0.0.6] - Fix grant type parameter error.
+## [0.0.7] - Update bindStbId function.
