@@ -408,6 +408,12 @@ class WasuUrsAuth {
 
     String paramStr = jsonEncode(userInfo);
     Map<String, dynamic> body = json.decode(paramStr);
+    /// nickname 参数名要小写
+    if(body.containsKey("nickName")) {
+      String nickName = body["nickName"];
+      body["nickname"] = nickName;
+      body.remove("nickName");
+    }
     await DioUtils.getInstance().post(url, headParam: head, bodyParam: body, listener: resultListener);
   }
 
